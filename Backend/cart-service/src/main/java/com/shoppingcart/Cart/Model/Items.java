@@ -1,0 +1,19 @@
+package com.shoppingcart.Cart.Model;
+
+
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Items {
+	
+	private String ProductName;
+	private double price;
+	private int quantity;
+	
+}

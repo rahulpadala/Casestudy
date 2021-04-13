@@ -1,0 +1,46 @@
+{
+    "profileId": 123455,
+    "fullName": "rahul",
+    "image": "asdf.jpg",
+    "emailId": "abc@xyz",
+    "mobileNumber": 9888990,
+    "about": "asdf sd sad",
+    "dateOfBirth": "2019-12-13",
+    "gender": "male",
+    "role": "Merchant",
+    "password": "abc123"
+}
+
+
+{
+	"productId":123,
+	"productType":"Watch",
+	"productName":"StopWatch",
+	"category":"Electronic",
+	"rating": {"1":"4.5","2":"5.0"},
+        "review": {"1":"abc","2":"xyz"},
+        "image":["abc.jpg","xyz.jpg"],
+	"price":999.0,
+	"description":"best product for exercise",
+	"specification":{"abc":"xyz"}
+}
+
+{
+}
+
+mongodb+srv://user:<password>@cluster0.6t1pw.mongodb.net/test
+
+
+ .antMatchers("/loginOrSignup/**").permitAll()
+                .antMatchers("/user/staff/**").hasAuthority("OWNER")
+                .antMatchers("/user/owner/**").hasAuthority("OWNER")
+                .antMatchers("/user/manager/**").hasAnyAuthority("OWNER", "MANAGER")
+                .antMatchers("/user/guest/**").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST")
+                .antMatchers("/room/api/hotel/**").hasAnyAuthority("OWNER", "MANAGER")
+                .antMatchers("/search/api/search/**").permitAll()
+                .antMatchers("/order/api/hotel/book/room").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST", "GUEST")
+                .antMatchers("/order/api/hotel/book/room/**").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST")
+                .antMatchers("/order/api/hotel/book/guest/**").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST", "GUEST")
+                .antMatchers("/order/api/hotel/book/get/**").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST")
+                .antMatchers("/report/api/report/order/**").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST")
+                .antMatchers("/report/api/report/owner/**").hasAuthority("OWNER")
