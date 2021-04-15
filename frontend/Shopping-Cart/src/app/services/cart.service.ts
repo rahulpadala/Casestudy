@@ -6,11 +6,16 @@ import { map } from 'rxjs/operators';
 //import { CartItem } from '../models/cart-item';
 // import { cartUrl } from '../config/api';
 import { Product } from '../models/product';
+import { environment } from 'src/environments/environment';
+import { CartItem } from '../models/cart-item'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+
+
+  private apiServerUrl= environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -41,7 +46,20 @@ export class CartService {
   //   );
   // }
 
-  // addProductToCart(product: Product): Observable<any> {
-  //   return this.http.post(cartUrl, { product });
+  // addCart(id:number):Observable<any>{
+  //   console.log("came to service");
+  //   return this.http.post<any>(`${this.apiServerUrl}/cart/addCart/${id}`,id);
   // }
+
+  generateCart(){
+    return this.http.post<any>(`${this.apiServerUrl}/token/cart`,null);
+  }
+
+  getCart(){
+    return this.http.get<CartItem>(`${this.apiServerUrl}/token/cart`)
+  }
+  
+  addProductToCart(Cid:number , Pid:number ): Observable<any> {
+    return this.http.post(`${this.apiServerUrl}/cart/addToCart/${Cid}/${Pid}`, { Cid , Pid });
+  }
 }

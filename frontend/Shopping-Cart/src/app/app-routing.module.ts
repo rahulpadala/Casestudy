@@ -10,6 +10,7 @@ import { MerchantComponent } from './components/register/merchant/merchant.compo
 import { DeliveryAgentComponent } from './components/register/delivery-agent/delivery-agent.component'
 import { CartComponent } from './components/shopping-cart/cart/cart.component'
 import { ProductItemComponent } from './components/shopping-cart/product-list/product-item/product-item.component'
+import { AuthGuard } from './services/auth.guard'
 
 const routes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'merchant' , component:MerchantComponent},
   { path: 'deliveryAgent', component:DeliveryAgentComponent},
   { path: 'shop', component: ShoppingCartComponent },
-  { path: 'cart', component: CartComponent},
+  { path: 'cart', component: CartComponent,canActivate:[AuthGuard]},
   {path: 'product/:id', component:ProductItemComponent},
   { path: '**', component: PageNotFoundComponent }
 ]

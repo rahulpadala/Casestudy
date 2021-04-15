@@ -1,17 +1,15 @@
-// import { Product } from './product';
+export interface CartItem
+{
+    cartId : number;
+    totalPrice : number;
+    items : Array<Items>;
+}
 
-// export class CartItem {
-//   id: number;
-//   productId: number;
-//   productName: string;
-//   qty: number;
-//   price: number;
-
-//   constructor(id: number, product: Product, qty = 1) {
-//     this.id = id;
-//     this.productId = product.id;
-//     this.productName = product.name;
-//     this.price = product.price;
-//     this.qty = qty;
-//   }
-// }
+export interface Items
+{
+    ProductName : string,
+    productId:number,
+    image : string,
+    price : number,
+    quantity: number
+}

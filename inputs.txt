@@ -28,7 +28,7 @@
 {
 }
 
-mongodb+srv://user:<password>@cluster0.6t1pw.mongodb.net/test
+mongodb+srv://user:user123@cluster0.6t1pw.mongodb.net
 
 
  .antMatchers("/loginOrSignup/**").permitAll()

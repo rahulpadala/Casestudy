@@ -3,6 +3,8 @@ package com.shoppingcart.Profile.Resource;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shoppingcart.Profile.Model.userProfile;
 import com.shoppingcart.Profile.Service.ProfileService;
+import com.shoppingcart.Profile.Service.SequenceGeneratorService;
 
 @RestController
 @RequestMapping("/profile")
@@ -22,20 +25,26 @@ public class ProfileResource {
 	
 	@Autowired
 	private ProfileService profileService;
+	
+	@Autowired
+	private SequenceGeneratorService sequenceGeneratorService;
 
 	@PostMapping("/addCustomer")
-	public userProfile addNewCustomerProfile(@RequestBody userProfile uP){
+	public userProfile addNewCustomerProfile(@Valid @RequestBody userProfile uP){
+		uP.setProfileId(sequenceGeneratorService.generateSequence(userProfile.SEQUENCE_NAME));
 		return profileService.addNewCustomerProfile(uP);
 	}
 	
 	@PostMapping("/addMerchant")
-	public void addNewMerchantProfile(@RequestBody userProfile uP) {
+	public void addNewMerchantProfile(@Valid @RequestBody userProfile uP) {
+		uP.setProfileId(sequenceGeneratorService.generateSequence(userProfile.SEQUENCE_NAME));
 		profileService.addNewMerchantProfile(uP);
 	}
 	
 	@PostMapping("/addDeliveryAgent")
-	public void addDeliveryAgentProfile(@RequestBody userProfile uP) {
-	    profileService.addDeliveryAgentProfile(uP);
+	public void addDeliveryAgentProfile(@Valid @RequestBody userProfile uP) {
+		uP.setProfileId(sequenceGeneratorService.generateSequence(userProfile.SEQUENCE_NAME));
+		profileService.addDeliveryAgentProfile(uP);
 	}
 	
 	@GetMapping("/viewAllUsers")

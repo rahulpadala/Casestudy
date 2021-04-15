@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartItem } from 'src/app/models/cart-item';
 import { User } from 'src/app/models/userprofile';
+import { CartService } from 'src/app/services/cart.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 
@@ -15,18 +17,22 @@ export class NavComponent implements OnInit {
 
   public loggedIn=false;
   public role : string= null;
+  public id : number;
   public customer = false;
   public merchant = false;
   public deliveryAgent=false;
+  public usercart : CartItem;
 
-  constructor(private loginservice:LoginService,private router: Router,private user: UserprofileService) { }
+  constructor(private loginservice:LoginService,private router: Router,private user: UserprofileService,private cart: CartService) { }
 
   ngOnInit(){
+    
     this.loggedIn = this.loginservice.isLoggedIn();
     if(this.loggedIn){
       this.assignRole();
     }
   }
+
 
   logout()
   {
@@ -54,6 +60,7 @@ export class NavComponent implements OnInit {
       (response: User) => {
         this.role=response.role;
         //console.log(this.role);
+        this.id=response.profileId;
         this.isCustomer();
         this.isMerchant();
         this.isDeliveryAgent();
@@ -67,9 +74,39 @@ export class NavComponent implements OnInit {
     if(this.role==="Customer")
     {
       this.customer = true;
+      //this.addCart(this.id);
+      this.addCart();
       console.log(this.customer);
     }   
   }
+
+  // public addCart(id:number):void{
+  //   console.log("came to nav");
+  //  this.cart.addCart(this.id).subscribe(
+  //    (response:CartService)=>{
+  //    },
+  //    (error:HttpErrorResponse)=>{
+  //      alert(error.message);
+  //    }
+  //  );
+  // }
+
+  public addCart():void{
+    this.cart.generateCart().subscribe(
+    (response:CartService)=>{
+    },
+   (error:HttpErrorResponse)=>{
+           alert(error.message);
+       }
+   );
+  }
+
+  gotoCart()
+  {
+    this.router.navigate(['cart'])
+  }
+
+
 
   isMerchant(){
     if(this.role=="Merchant")

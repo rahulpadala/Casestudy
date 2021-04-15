@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/userprofile';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 import { NgForm } from '@angular/forms';
+import { CartComponent } from '../../shopping-cart/cart/cart.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-customer',
@@ -15,7 +17,7 @@ export class CustomerComponent implements OnInit {
 
   public users: User[] | undefined;
 
-  constructor(private userService: UserprofileService,private router: Router){}
+  constructor(private userService: UserprofileService,private router: Router,private cart: CartService){}
   ngOnInit(){
     
   }
@@ -34,4 +36,8 @@ export class CustomerComponent implements OnInit {
       }
     );
   }
+
+
+
+
 }

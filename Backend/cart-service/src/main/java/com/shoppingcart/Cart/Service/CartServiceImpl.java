@@ -49,10 +49,10 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void addCart(int id) {
-		if(cartRepository.findByCartId(id)!=null)
-		{
-			throw new InputErrorException("Cart Already Exists with the ID "+id);
-		}
+//		if(cartRepository.findByCartId(id)!=null)
+//		{
+//			throw new InputErrorException("Cart Already Exists with the ID "+id);
+//		}
 		Cart cart = new Cart();
 		cart.setCartId(id);
 		List<Items> item = new ArrayList<Items>();
@@ -62,10 +62,10 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public Cart getCartById(int id) {
-		if(cartRepository.findByCartId(id)==null)
-		{
-			throw new ResourceNotFoundException("Cart Not Found with Id "+id);
-		}
+//		if(cartRepository.findByCartId(id)==null)
+//		{
+//			throw new ResourceNotFoundException("Cart Not Found with Id "+id);
+//		}
 		return cartRepository.findByCartId(id);
 	}
 
@@ -86,16 +86,37 @@ public class CartServiceImpl implements CartService {
 		}
 		Cart cart = getCartById(cId);
 		Items items = new Items();
+		boolean exists = false;
+		int i=0;
 		ResponseEntity<Product> re = restTemplate.getForEntity("http://Product-Service/product/viewProductById/{id}", Product.class,pId);
 		if(re==null)
 		{
 			throw new ResourceNotFoundException("Product Not Found with Id "+pId);
 		}
-		items.setProductName(re.getBody().getProductName());
-		items.setPrice(re.getBody().getPrice());
-		items.setQuantity(1);
-		cart.getItems().add(items);
+		for(i=0;i<cart.getItems().size();i++)
+		{
+			if(cart.getItems().get(i).getProductId()==pId)
+			{
+				exists = true;
+				break;
+			}
+		}
+		
+		if(!exists)
+		{
+			items.setProductName(re.getBody().getProductName());
+			items.setProductId(re.getBody().getProductId());
+			items.setImage(re.getBody().getImage().get(0));
+			items.setPrice(re.getBody().getPrice());
+			items.setQuantity(1);
+			cart.getItems().add(items);
+			cartRepository.save(cart);
+			return;
+		} 
+		
+		cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity()+1);
 		cartRepository.save(cart);
+		
 //		System.out.println(cart.getItems().size());
 //		System.out.println(cart.getItems().get(0).getProductName());
 //		int tc = 0;

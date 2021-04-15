@@ -8,5 +8,11 @@ export interface Product {
   image: Array<string>,
   price:number,
   description:string,
-  specification: Map<string,string>
+  specification: KeyValue<string,string>,
+  cost:String
+}
+
+interface KeyValue<K, V> {
+  key: K
+  value: V
 }

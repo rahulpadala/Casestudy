@@ -10,12 +10,12 @@ public interface CartService {
 
 	List<Cart> getAllCarts();
 
-	void addCart(int id);
-
 	Cart getCartById(int id);
 
 	Cart updateCart(Cart cart);
 
 	void addToCart(int cId, int pId);
+
+	void addCart(int id);
 
 }

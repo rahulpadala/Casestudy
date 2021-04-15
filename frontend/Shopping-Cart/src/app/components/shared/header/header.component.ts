@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/userprofile';
+import { LoginService } from 'src/app/services/login.service';
+import { UserprofileService } from 'src/app/services/userprofile.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public name:string;
+  constructor(private loginService : LoginService,private userservice : UserprofileService) {  }
 
   ngOnInit() {
+    this.user()
+  }
+
+  user()
+  {
+    if(this.loginService.isLoggedIn())
+    {
+      this.userservice.getUser().subscribe(
+        (response:User)=>
+        {
+          this.name = response.fullName;
+        }
+      )
+    }
   }
 
 }

@@ -2,41 +2,80 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript"></script>
+
+<!-- <ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[0]" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[1]" alt="Random second slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img [src]="images[2]" alt="Random third slide">
+          </div>
+          <div class="carousel-caption">
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+    </ng-template>
+</ngb-carousel> -->
+
 <div class="col-sm-12 col-md-12 col-lg-12">
     <!-- product -->
     <div class="product-content product-wrap clearfix product-deatil">
         <div class="row">
-            <div>
-                <div class="product-image">
-                    <div id="myCarousel-2" class="carousel slide">
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel-2" data-slide-to="0" class=""></li>
-                            <li data-target="#myCarousel-2" data-slide-to="1" class="active"></li>
-                            <li data-target="#myCarousel-2" data-slide-to="2" class=""></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <!-- Slide 1 -->
-                            <div class="item active">
-                                <img src="https://via.placeholder.com/700x400/FFB6C1/000000" class="img-responsive" alt="" />
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="item">
-                                <img src="https://via.placeholder.com/700x400/87CEFA/000000" class="img-responsive" alt="" />
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="item">
-                                <img src="https://via.placeholder.com/700x400/B0C4DE/000000" class="img-responsive" alt="" />
-                            </div>
+            <div>   
+             <div class="product-image">
+                <ngb-carousel>
+                    <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper">
+                          <img src="{{product?.image[1]}}" alt="Random first slide">
                         </div>
-                        <a class="left carousel-control" href="#myCarousel-2" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
-                        <a class="right carousel-control" href="#myCarousel-2" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
-                    </div>
-                </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper">
+                          <img src={{product?.image[2]}} alt="Random Second slide">
+                        </div>
+                    </ng-template> 
+                     
+                    <ng-template ngbSlide>
+                        <div class="picsum-img-wrapper">
+                          <img src={{product?.image[3]}} alt="Random Third slide">
+                        </div>
+                    </ng-template> 
+                </ngb-carousel>
+             </div>   
             </div>
+
+                            <!-- Slide 1 -->
+                            <!-- <div class="item active">
+                                <img src= "https://via.placeholder.com/700x400/FFB6C1/000000" class="img-responsive" alt="" />
+                            </div> -->
+                            <!-- Slide 2 -->
+                            <!-- <div class="item">
+                                <img src="https://via.placeholder.com/700x400/87CEFA/000000" class="img-responsive" alt="" />
+                            </div> -->
+                            <!-- Slide 3 -->
+                            <!-- <div class="item">
+                                <img src="https://via.placeholder.com/700x400/B0C4DE/000000" class="img-responsive" alt="" />
+                            </div> -->
 
             <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                 <h2 class="name">
-                    Product Name Title Here
+                    {{product?.productName}}
                     <small>Product by <a href="javascript:void(0);">Adeline</a></small>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
@@ -48,7 +87,7 @@
                 </h2>
                 <hr />
                 <h3 class="price-container">
-                    $129.54
+                    ₹ {{product?.cost}}
                     <small>*includes tax</small>
                 </h3>
                 <div class="certified">
@@ -63,12 +102,43 @@
                 </div>
                 <hr />
                 <div class="description description-tabs">
-                    <ul id="myTab" class="nav nav-pills">
+                    
+                    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+                        <li ngbNavItem>
+                          <a ngbNavLink>Product Details </a>
+                          <ng-template ngbNavContent>
+                              <ul>
+                                <li>Product Id : {{product?.productId}} </li>
+                                <li>Product Name : {{product?.productName}}</li>
+                                <li>Product Type : {{product?.productType}}</li>
+                                <li>Product Category : {{product?.category}}</li>
+                              </ul>            
+                          </ng-template>
+                        </li>
+                        <li ngbNavItem>
+                          <a ngbNavLink>Description </a>
+                          <ng-template ngbNavContent>
+                              {{product?.description}}
+                          </ng-template>
+                        </li>
+                        <li ngbNavItem>
+                            <a ngbNavLink>specification </a>
+                            <ng-template ngbNavContent>{{product?.specification}}</ng-template>
+                          </li>                        
+                    </ul>
+                    <div [ngbNavOutlet]="nav"></div>
+
+                    
+                    
+                    
+                    
+                    <!-- <ul id="myTab" class="nav nav-pills">
                         <li class="active"><a href="#more-information" data-toggle="tab" class="no-margin">Product Description </a></li>
                         <li class=""><a href="#specifications" data-toggle="tab">Specifications</a></li>
                         <li class=""><a href="#reviews" data-toggle="tab">Reviews</a></li>
-                    </ul>
-                    <div id="myTabContent" class="tab-content">
+                    </ul> -->
+                    
+                    <!-- <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="more-information">
                             <br />
                             <strong>Description Title</strong>
@@ -107,10 +177,10 @@
                                     <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="" data-original-title="Add Photo"><i class="fa fa-camera"></i></a>
                                     <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="" data-original-title="Add File"><i class="fa fa-file"></i></a>
                                 </div>
-                            </form>
+                            </form> -->
 
-                            <div class="chat-body no-padding profile-message">
-                                <ul>
+                            <!-- <div class="chat-body no-padding profile-message">
+                                 <ul>
                                     <li class="message">
                                         <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="online" />
                                         <span class="message-text">
@@ -162,18 +232,18 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
+                             </div> -->
+                        <!-- </div>
+                    </div> -->
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <a href="javascript:void(0);" class="btn btn-success btn-lg">Add to cart ($129.54)</a>
+                        <a href="cart" class="btn btn-success btn-lg"  *ngIf="loggedIn" (click)="addToCart(product.productId)">Add to cart</a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="btn-group pull-right">
-                            <button class="btn btn-white btn-default"><i class="fa fa-star"></i> Add to wishlist</button>
+                            <button class="btn btn-white btn-default"><i class="fa fa-star"></i> Home </button>
                             <button class="btn btn-white btn-default"><i class="fa fa-envelope"></i> Contact Seller</button>
                         </div>
                     </div>

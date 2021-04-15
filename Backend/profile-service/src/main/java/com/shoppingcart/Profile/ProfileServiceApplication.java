@@ -20,7 +20,6 @@ public class ProfileServiceApplication {
 	public BCryptPasswordEncoder passwordEncoder()
 	{
 		return new BCryptPasswordEncoder();
-				
 	}
 
 }

@@ -44,7 +44,6 @@ public class CartResource {
 		return cartService.getCartById(id);
 	}
 
-	
 	@PutMapping("updateCart")
 	public ResponseEntity<Cart> updateCart(@RequestBody Cart cart){
 		return new ResponseEntity<Cart>(cartService.updateCart(cart),HttpStatus.OK);
