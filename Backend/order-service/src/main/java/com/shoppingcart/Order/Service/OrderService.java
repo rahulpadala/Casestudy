@@ -19,7 +19,7 @@ public interface OrderService {
 
 	Orders findMaxByOrderId();
 
-	void placeOrder(Cart cart);
+	void placeOrder(int id);
 
 	Optional<Orders> getOrderByOrderId(int id);
 

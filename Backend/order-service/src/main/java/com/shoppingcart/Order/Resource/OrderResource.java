@@ -59,10 +59,10 @@ public class OrderResource {
 		return orderService.findMaxByOrderId();
 	}
 
-	@PostMapping("/placeOrder")
-	public void placeOrder(@RequestBody Cart cart)
+	@PostMapping("/placeOrder/{id}")
+	public void placeOrder(@PathVariable("id") int id)
 	{
-		orderService.placeOrder(cart);
+		orderService.placeOrder(id);
 	}
 
 

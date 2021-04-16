@@ -58,6 +58,10 @@ export class CartService {
   getCart(){
     return this.http.get<CartItem>(`${this.apiServerUrl}/token/cart`)
   }
+
+  updateCart(Cid:number, id:number){
+    return this.http.post(`${this.apiServerUrl}/cart/updateCart/${Cid}/${id}`,{Cid , id});
+  }
   
   addProductToCart(Cid:number , Pid:number ): Observable<any> {
     return this.http.post(`${this.apiServerUrl}/cart/addToCart/${Cid}/${Pid}`, { Cid , Pid });

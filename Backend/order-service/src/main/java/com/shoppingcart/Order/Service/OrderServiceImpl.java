@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.shoppingcart.Order.Model.Address;
 import com.shoppingcart.Order.Model.Cart;
@@ -23,6 +25,9 @@ public class OrderServiceImpl implements OrderService{
 
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@Override
 	public List<Orders> getAllOrders() {
@@ -50,21 +55,22 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void placeOrder(Cart cart) {
+	public void placeOrder(int id) {
 		//Address
 		Orders order = new Orders();
 		Address address = new Address();
 		List<Product> products = new ArrayList<Product>();
-		
-		order.setCustomerId(cart.getCartId());
+		ResponseEntity<Cart> cart = restTemplate.getForEntity("http://Cart-Service/cart/getCartById/{id}", Cart.class,id);
+		order.setCustomerId(cart.getBody().getCartId());
+		order.setAmountPaid(cart.getBody().getTotalPrice());
 		order.setOrderStatus("Ordered");
-		order.setQuantity(cart.getItems().size());
+		order.setQuantity(cart.getBody().getItems().size());
 		order.setAddress(address);
-		for(int i=0;i<cart.getItems().size();i++)
+		for(int i=0;i<cart.getBody().getItems().size();i++)
 		{
 			Product product = new Product();
-			product.setProductId(""+(i+1));
-			product.setProductName(cart.getItems().get(i).getProductName());
+			product.setProductId(cart.getBody().getItems().get(i).getProductId());
+			product.setProductName(cart.getBody().getItems().get(i).getProductName());
 			products.add(product);
 		}
 		order.setProduct(products);

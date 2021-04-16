@@ -9,7 +9,8 @@
    
     <!-- Cart Item-->
     
-    <div *ngFor="let items of cartItems" class="cart-item d-md-flex justify-content-between"><span class="remove-item"><i class="fa fa-times"></i></span>
+    <div *ngFor="let items of cartItems; let i=index" class="cart-item d-md-flex justify-content-between">
+        <span class="remove-item" (click)="updateCart(i)"><i class="fa fa-times"></i></span>
         <div class="px-3 my-3">
             <a class="cart-item-product" href="product/{{items.productId}}">
                 <div class="cart-item-product-thumb"><img src={{items.image}} alt="Product"></div>
@@ -46,7 +47,7 @@
             <input class="form-control form-control-sm my-2 mr-3" type="text" placeholder="Coupon code" required="">
             <button class="btn btn-style-1 btn-secondary btn-sm my-2 mx-auto mx-sm-0" type="submit">Apply Coupon</button>
         </form>
-        <div class="py-2"><span class="d-inline-block align-middle text-sm text-muted font-weight-medium text-uppercase mr-2">Subtotal:</span><span class="d-inline-block align-middle text-xl font-weight-medium">$188.50</span></div>
+        <div class="py-2"><span class="d-inline-block align-middle text-sm text-muted font-weight-medium text-uppercase mr-2">Subtotal:</span><span class="d-inline-block align-middle text-xl font-weight-medium">{{Cart?.totalPrice}}</span></div>
     </div>
     <!-- Buttons-->
     <hr class="my-2">

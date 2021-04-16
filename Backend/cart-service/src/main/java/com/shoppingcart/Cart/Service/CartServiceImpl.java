@@ -70,12 +70,15 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Cart updateCart(Cart cart) {
-		if(cartRepository.findByCartId(cart.getCartId())==null)
+	public void updateCart(int cid,int id) {
+		if(cartRepository.findByCartId(cid)==null)
 		{
-			throw new InputErrorException("Cart Not Found with Id "+cart.getCartId());
+			throw new InputErrorException("Cart Not Found with Id "+cid);
 		}
-		return cartRepository.save(cart);
+		Cart cart = getCartById(cid);
+		cart.setTotalPrice(cart.getTotalPrice()-(cart.getItems().get(id).getPrice()*cart.getItems().get(id).getQuantity()));
+		cart.getItems().remove(id);
+		cartRepository.save(cart);
 	}
 
 	@Override
@@ -110,21 +113,13 @@ public class CartServiceImpl implements CartService {
 			items.setPrice(re.getBody().getPrice());
 			items.setQuantity(1);
 			cart.getItems().add(items);
+			cart.setTotalPrice(cart.getTotalPrice()+items.getPrice());
 			cartRepository.save(cart);
 			return;
-		} 
-		
+		} 	
 		cart.getItems().get(i).setQuantity(cart.getItems().get(i).getQuantity()+1);
+		cart.setTotalPrice(cart.getTotalPrice()+cart.getItems().get(i).getPrice());
 		cartRepository.save(cart);
-		
-//		System.out.println(cart.getItems().size());
-//		System.out.println(cart.getItems().get(0).getProductName());
-//		int tc = 0;
-//		for(int i=0;i<cart.getItems().size();i++)
-//		{
-//			tc += cart.getItems().get(i).getPrice();
-//		}
-//		System.out.println(tc);
 
 	}
 	

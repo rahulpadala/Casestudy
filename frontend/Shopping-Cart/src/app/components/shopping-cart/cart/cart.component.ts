@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from 'src/app/models/cart-item';
 import { Items } from 'src/app/models/cart-item'
 import { Product } from 'src/app/models/product';
@@ -21,7 +21,7 @@ export class CartComponent implements OnInit{
   cartTotal = 0
 
   public Cart : CartItem
-  public id : number
+  public cid : number
   public loggedIn = false;
   public len = 0;
 
@@ -29,12 +29,12 @@ export class CartComponent implements OnInit{
     private cartService: CartService,
     private route: ActivatedRoute,
     private productService : ProductService,
-    private loginservice : LoginService
+    private loginservice : LoginService,
+    private router:Router
     
   ) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
     this.IsloggenIn();    
   }
 
@@ -64,13 +64,27 @@ export class CartComponent implements OnInit{
     this.cartService.getCart().subscribe(
       (response:CartItem)=>{
         this.Cart = response;
+        this.cid = response.cartId;
         this.cartItems = response.items;
         this.len=response.items.length; 
         console.log(response);
         
       },error=>{
-         console.log(error);
+        this.router.navigate(['error'])
           }
+    );
+
+  }
+
+  updateCart(id:number)
+  {
+    this.cartService.updateCart(this.cid,id).subscribe(
+      (response:any)=>
+      {
+        location.reload();
+      },error=>{
+        console.log(error);
+        }
     );
 
   }

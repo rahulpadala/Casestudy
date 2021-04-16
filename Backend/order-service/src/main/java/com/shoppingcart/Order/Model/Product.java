@@ -3,20 +3,20 @@ package com.shoppingcart.Order.Model;
 
 public class Product {
 	
-	private String productId;
+	private int productId;
 	private String productName;
 	
-	public Product(String productId, String productName) {
+	public Product(int productId, String productName) {
 		this.productId = productId;
 		this.productName = productName;
 	}
 	public Product() {
 	
 	}
-	public String getProductId() {
+	public int getProductId() {
 		return productId;
 	}
-	public void setProductId(String productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 	public String getProductName() {

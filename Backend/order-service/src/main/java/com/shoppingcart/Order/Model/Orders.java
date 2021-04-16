@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Orders {
 	
 	@Id
-	private int orderId;
+	private String orderId;
 	
 	private LocalDate orderDate;
 	private int customerId;
@@ -23,7 +23,7 @@ public class Orders {
 	
 	
 	
-	public Orders(int orderId, LocalDate orderDate, int customerId, double amountPaid, String modeOfPayment,
+	public Orders(String orderId, LocalDate orderDate, int customerId, double amountPaid, String modeOfPayment,
 			String orderStatus, int quantity, Address address, List<Product> product) {
 		this.orderId = orderId;
 		this.orderDate = orderDate;
@@ -42,10 +42,10 @@ public class Orders {
 	}
 
 
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	public LocalDate getOrderDate() {

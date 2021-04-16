@@ -19,7 +19,7 @@ public class Cart {
 	
 	@Id
 	private int cartId;
-	private double totalPrice;
+	private double totalPrice = 0;
 	private List<Items> items;
 	
 }
