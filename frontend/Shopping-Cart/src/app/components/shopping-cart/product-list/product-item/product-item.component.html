@@ -239,7 +239,8 @@
                 <hr />
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <a href="cart" class="btn btn-success btn-lg"  *ngIf="loggedIn" (click)="addToCart(product.productId)">Add to cart</a>
+                        <a href="cart" class="btn btn-success btn-lg"  *ngIf="loggedIn && role===customer" (click)="addToCart(product.productId)">Add to cart</a>
+                        <a href="cart" class="btn btn-danger btn-lg"  *ngIf="loggedIn && role===merchant" (click)="addToCart(product.productId)">Delete</a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="btn-group pull-right">

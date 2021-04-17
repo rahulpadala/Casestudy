@@ -10,7 +10,6 @@ import { NavComponent } from './components/shared/nav/nav.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductListComponent } from './components/shopping-cart/product-list/product-list.component';
 import { CartComponent } from './components/shopping-cart/cart/cart.component';
-import { CartItemComponent } from './components/shopping-cart/cart/cart-item/cart-item.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
@@ -26,6 +25,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { StockComponent } from './components/stock/stock.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +37,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ShoppingCartComponent,
     ProductListComponent,
     CartComponent,
-    CartItemComponent,
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
     CustomerComponent,
     MerchantComponent,
     DeliveryAgentComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     NgbModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule
 
   ],
   providers: [[{

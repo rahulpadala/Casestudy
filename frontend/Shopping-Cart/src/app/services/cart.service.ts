@@ -16,7 +16,7 @@ export class CartService {
 
 
   private apiServerUrl= environment.apiBaseUrl;
-
+  
   constructor(private http: HttpClient) { }
 
   // getCartItems(): Observable<CartItem[]> {
@@ -58,6 +58,8 @@ export class CartService {
   getCart(){
     return this.http.get<CartItem>(`${this.apiServerUrl}/token/cart`)
   }
+
+  
 
   updateCart(Cid:number, id:number){
     return this.http.post(`${this.apiServerUrl}/cart/updateCart/${Cid}/${id}`,{Cid , id});

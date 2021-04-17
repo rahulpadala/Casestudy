@@ -11,6 +11,7 @@ import { DeliveryAgentComponent } from './components/register/delivery-agent/del
 import { CartComponent } from './components/shopping-cart/cart/cart.component'
 import { ProductItemComponent } from './components/shopping-cart/product-list/product-item/product-item.component'
 import { AuthGuard } from './services/auth.guard'
+import { StockComponent } from './components/stock/stock.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'shop', component: ShoppingCartComponent },
   { path: 'cart', component: CartComponent,canActivate:[AuthGuard]},
   {path: 'product/:id', component:ProductItemComponent},
+  {path: 'stock', component:StockComponent},
   { path: '**', component: PageNotFoundComponent }
 ]
 

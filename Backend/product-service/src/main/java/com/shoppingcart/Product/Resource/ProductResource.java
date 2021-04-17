@@ -63,7 +63,7 @@ public class ProductResource {
 		return new ResponseEntity<Product>(productService.updateProduct(pro),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/deleteMapping/{id}")
+	@DeleteMapping("/deleteProduct/{id}")
 	public void deleteProductById(@PathVariable("id") int id)
 	{
 		productService.deleteProductById(id);

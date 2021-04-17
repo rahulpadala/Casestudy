@@ -18,7 +18,10 @@ export class ProductItemComponent implements OnInit {
   public product: Product;
   public id : number;
   public loggedIn = false;
-  public Cid : number ; 
+  public Cid : number ;
+  public role : string;
+  public customer = "Customer";
+  public merchant = "Merchant" 
 
   constructor(private productService : ProductService,private route: ActivatedRoute,private loginservice : LoginService,
     private cartService : CartService,private userService: UserprofileService) { }
@@ -59,6 +62,7 @@ export class ProductItemComponent implements OnInit {
     this.userService.getUser().subscribe(
       (response:User)=>{
         this.Cid=response.profileId;
+        this.role = response.role;
       }
     )
     }

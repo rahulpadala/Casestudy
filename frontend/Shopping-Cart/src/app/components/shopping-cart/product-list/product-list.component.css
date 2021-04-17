@@ -9,6 +9,8 @@ body{
 h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 
 
+
+
 .product-grid6,.product-grid6 .product-image6{overflow:hidden}
 .product-grid6{font-family:'Open Sans',sans-serif;text-align:center;position:relative;transition:all .5s ease 0s}
 .product-grid6:hover{box-shadow:0 0 10px rgba(0,0,0,.3)}
@@ -22,7 +24,7 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 .product-grid6 .title a:hover{color:#2e86de}
 .product-grid6 .price{font-size:18px;font-weight:600;color:#2e86de}
 .product-grid6 .price span{color:#999;font-size:15px;font-weight:400;text-decoration:line-through;margin-left:7px;display:inline-block}
-.product-grid6 .social{background-color:#fff;width:100%;padding:0;margin:0;list-style:none;opacity:0;transform:translateX(-50%);position:absolute;bottom:-50%;left:50%;z-index:1;transition:all .5s ease 0s}
+.product-grid6 .social{width:100%;padding:0;margin:0;list-style:none;opacity:0;transform:translateX(-50%);position:absolute;bottom:-50%;left:50%;z-index:1;transition:all .5s ease 0s}
 .product-grid6:hover .social{opacity:1;bottom:20px}
 .product-grid6 .social li{display:inline-block}
 .product-grid6 .social li a{color:#909090;font-size:16px;line-height:45px;text-align:center;height:45px;width:45px;margin:0 7px;border:1px solid #909090;border-radius:50px;display:block;position:relative;transition:all .3s ease-in-out}

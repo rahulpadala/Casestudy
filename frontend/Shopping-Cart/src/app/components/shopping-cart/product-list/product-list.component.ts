@@ -22,6 +22,9 @@ export class ProductListComponent implements OnInit{
   public products: Product[] | undefined;
   public cost:String[];
   public Cid:number;
+  public images:any;
+  public role:string;
+  public merchant = "Merchant";
   constructor( private productService : ProductService,private router:Router,private userService: UserprofileService,
     private cartService : CartService,private login : LoginService
     ){}
@@ -34,13 +37,36 @@ export class ProductListComponent implements OnInit{
     this.productService.getProducts().subscribe(
       (response: Product[]) => {
         this.products = response;
-        console.log(response);     
+        console.log(response);
+        this.images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);     
         this.getcosts();
       },
       (error: HttpErrorResponse)=> {
         alert(error.message);
       }
     );
+  }
+
+
+  public searchProducts(key: string): void {
+    const results: Product[] = [];
+    for (const product of this.products) {
+      if (product.productName.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || product.productType.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || product.category.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      ) 
+      {
+        results.push(product);
+        this.images = null;
+      }
+    }
+    this.products = results;
+    // if (results.length === 0 || !key) {
+    //   this.getProducts();
+    // }
+    if (!key) {
+      this.getProducts();
+    }
   }
 
   logeedIn()
@@ -63,6 +89,7 @@ export class ProductListComponent implements OnInit{
     this.userService.getUser().subscribe(
       (response:User)=>{
         this.Cid=response.profileId;
+        this.role = response.role;
       }
     )
   }
@@ -89,6 +116,8 @@ export class ProductListComponent implements OnInit{
     var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
     return res;
   }
+
+  
 
 }
 
