@@ -42,18 +42,18 @@
                 <ngb-carousel>
                     <ng-template ngbSlide>
                         <div class="picsum-img-wrapper">
-                          <img src="{{product?.image[1]}}" alt="Random first slide">
+                          <img src="{{product?.image2}}" alt="Random first slide">
                         </div>
                     </ng-template>
                     <ng-template ngbSlide>
                         <div class="picsum-img-wrapper">
-                          <img src={{product?.image[2]}} alt="Random Second slide">
+                          <img src={{product?.image3}} alt="Random Second slide">
                         </div>
                     </ng-template> 
                      
                     <ng-template ngbSlide>
                         <div class="picsum-img-wrapper">
-                          <img src={{product?.image[3]}} alt="Random Third slide">
+                          <img src={{product?.image4}} alt="Random Third slide">
                         </div>
                     </ng-template> 
                 </ngb-carousel>
@@ -76,7 +76,8 @@
             <div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                 <h2 class="name">
                     {{product?.productName}}
-                    <small>Product by <a href="javascript:void(0);">Adeline</a></small>
+                    <!-- <small>Product by <a href="javascript:void(0);">Adeline</a></small> -->
+                    <br>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-primary"></i>
@@ -121,10 +122,10 @@
                               {{product?.description}}
                           </ng-template>
                         </li>
-                        <li ngbNavItem>
+                        <!-- <li ngbNavItem>
                             <a ngbNavLink>specification </a>
                             <ng-template ngbNavContent>{{product?.specification}}</ng-template>
-                          </li>                        
+                          </li>                         -->
                     </ul>
                     <div [ngbNavOutlet]="nav"></div>
 
@@ -240,7 +241,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <a href="cart" class="btn btn-success btn-lg"  *ngIf="loggedIn && role===customer" (click)="addToCart(product.productId)">Add to cart</a>
-                        <a href="cart" class="btn btn-danger btn-lg"  *ngIf="loggedIn && role===merchant" (click)="addToCart(product.productId)">Delete</a>
+                        <a href="shop" class="btn btn-danger btn-lg"  *ngIf="loggedIn && role===merchant" (click)="deleteProduct(product.productId)">Delete</a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="btn-group pull-right">

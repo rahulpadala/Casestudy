@@ -18,4 +18,6 @@ public interface CartService {
 
 	void addCart(int id);
 
+	void deleteCart(int cId);
+
 }

@@ -68,7 +68,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product updateProduct(Product pro) {
-		if(productRepository.findById(pro.getProductId())==null)
+		if((productRepository.findById(pro.getProductId())).isEmpty())
 		{
 			throw new ResourceNotFoundException("Product is not Found to Update with Id "+pro.getProductId());
 		}

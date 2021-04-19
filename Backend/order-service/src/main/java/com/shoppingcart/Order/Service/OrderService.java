@@ -15,11 +15,11 @@ public interface OrderService {
 
 	List<Orders> getOrderByCustomerId(int id);
 
-	List<Address> getAddByCustomerId(int id);
+	Optional<Address> getAddByCustomerId(int id);
 
 	Orders findMaxByOrderId();
 
-	void placeOrder(int id);
+	void placeOrder(int id, Address address);
 
 	Optional<Orders> getOrderByOrderId(int id);
 

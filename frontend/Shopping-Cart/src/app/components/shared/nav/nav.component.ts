@@ -32,8 +32,6 @@ export class NavComponent implements OnInit {
       this.assignRole();
     }
   }
-
-
   logout()
   {
     this.loginservice.logout();

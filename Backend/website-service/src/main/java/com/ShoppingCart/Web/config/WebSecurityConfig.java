@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/product/viewAllProducts","/product/**").permitAll()
                 .antMatchers("/profile/addCustomer","/profile/addMerchant","/profile/addDeliveryAgent").permitAll()
+                .antMatchers("/order/**").permitAll()
                 .antMatchers("/token/user").hasAnyAuthority("Merchant","Customer","DeliveryAgent")
                 .antMatchers("/token/cart").hasAuthority("Customer")
                 .antMatchers("/cart/**").hasAuthority("Customer")

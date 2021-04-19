@@ -14,7 +14,7 @@ public class Orders {
 	
 	private LocalDate orderDate;
 	private int customerId;
-	private double amountPaid;
+	private double amount;
 	private String modeOfPayment;
 	private String orderStatus;
 	private int quantity;
@@ -28,7 +28,7 @@ public class Orders {
 		this.orderId = orderId;
 		this.orderDate = orderDate;
 		this.customerId = customerId;
-		this.amountPaid = amountPaid;
+		this.amount = amountPaid;
 		this.modeOfPayment = modeOfPayment;
 		this.orderStatus = orderStatus;
 		this.quantity = quantity;
@@ -60,11 +60,11 @@ public class Orders {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-	public double getAmountPaid() {
-		return amountPaid;
+	public double getAmount() {
+		return amount;
 	}
-	public void setAmountPaid(double amountPaid) {
-		this.amountPaid = amountPaid;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 	public String getModeOfPayment() {
 		return modeOfPayment;
@@ -101,7 +101,7 @@ public class Orders {
 	@Override
 	public String toString() {
 		return "Orders [orderId=" + orderId + ", orderDate=" + orderDate + ", customerId=" + customerId
-				+ ", amountPaid=" + amountPaid + ", modeOfPayment=" + modeOfPayment + ", orderStatus=" + orderStatus
+				+ ", amount=" + amount + ", modeOfPayment=" + modeOfPayment + ", orderStatus=" + orderStatus
 				+ ", quantity=" + quantity + ", address=" + address + ", product=" + product + "]";
 	}
 	

@@ -9,6 +9,6 @@ import com.shoppingcart.Order.Model.Address;
 
 public interface AddressRepository extends MongoRepository<Address, Integer>{
 	
-	public List<Address> findByCustomerId(int customerId);
+//	public List<Address> findByCustomerId(int customerId);
 
 }

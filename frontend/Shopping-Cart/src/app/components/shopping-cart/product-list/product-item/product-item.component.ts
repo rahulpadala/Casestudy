@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { User } from 'src/app/models/userprofile';
 import { CartService } from 'src/app/services/cart.service';
@@ -24,13 +24,24 @@ export class ProductItemComponent implements OnInit {
   public merchant = "Merchant" 
 
   constructor(private productService : ProductService,private route: ActivatedRoute,private loginservice : LoginService,
-    private cartService : CartService,private userService: UserprofileService) { }
+    private cartService : CartService,private userService: UserprofileService ,private router : Router ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.getProductById(this.id);
     this.loggedIn = this.loginservice.isLoggedIn();
     this.getUser();
+  }
+
+  public deleteProduct(id:number){
+    this.productService.deleteProduct(id).subscribe(
+      (response)=>{
+        
+      },
+      (error: HttpErrorResponse)=> {
+        alert(error.message);
+      }
+    )
   }
 
   public getProductById(id: number): void {

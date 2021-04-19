@@ -1,6 +1,7 @@
 package com.shoppingcart.Order.Model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Address")
@@ -14,25 +15,6 @@ public class Address {
 	private String city;
 	private int pincode;
 	private String state;
-	
-	
-	public Address(int customerId, String fullName, String mobileNumber, int flatNumber, String city, int pincode,
-			String state) {
-		this.customerId = customerId;
-		this.fullName = fullName;
-		this.mobileNumber = mobileNumber;
-		this.flatNumber = flatNumber;
-		this.city = city;
-		this.pincode = pincode;
-		this.state = state;
-	}
-	
-	
-	public Address() {
-		
-	}
-
-
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -75,13 +57,27 @@ public class Address {
 	public void setState(String state) {
 		this.state = state;
 	}
-
-
+	public Address(int customerId, String fullName, String mobileNumber, int flatNumber, String city,
+			int pincode, String state) {
+		this.customerId = customerId;
+		this.fullName = fullName;
+		this.mobileNumber = mobileNumber;
+		this.flatNumber = flatNumber;
+		this.city = city;
+		this.pincode = pincode;
+		this.state = state;
+	}
+	public Address() {
+		
+	}
 	@Override
 	public String toString() {
-		return "Address [customerId=" + customerId + ", fullName=" + fullName + ", mobileNumber=" + mobileNumber
-				+ ", flatNumber=" + flatNumber + ", city=" + city + ", pincode=" + pincode + ", state=" + state + "]";
+		return "Address [customerId=" + customerId + ", fullName=" + fullName + ", mobileNumber="
+				+ mobileNumber + ", flatNumber=" + flatNumber + ", city=" + city + ", pincode=" + pincode + ", state="
+				+ state + "]";
 	}
+	
+	
 	
 	
 

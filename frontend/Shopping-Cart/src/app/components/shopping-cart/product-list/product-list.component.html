@@ -14,9 +14,10 @@
      name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search products..." required>
   </form> -->
 
-  <div class="input-group" style="width:50%;margin:auto;">
+
+  <div class="input-group" style="width:60%;margin:auto;">
   <input type="search" (ngModelChange)="searchProducts(key.value)" #key="ngModel" ngModel
-  class="form-control rounded" placeholder="Search" aria-label="Search"
+  class="form-control rounded" placeholder="Search for products..." aria-label="Search"
   aria-describedby="search-addon" />
   <button type="button" (click)="searchProducts(key.value)" class="btn btn-outline-primary"><a class="fa fa-search"></a></button>
 </div> 
@@ -59,8 +60,8 @@
       <div *ngFor="let product of products" class="col-md-3 col-sm-6">
           <div class="product-grid6 rounded">
               <div class="product-image6">
-                  <a href="#">
-                      <img class="pic-1" src={{product.image[0]}}>
+                  <a href="product/{{product.productId}}">
+                      <img class="pic-1" src={{product.image1}}>
                   </a>
               </div>
               <div class="product-content">
@@ -70,7 +71,7 @@
               <ul class="social">
                   <li class="user"><a href="product/{{product.productId}}" data-tip="view"><i class="fa fa-search"></i></a></li>
                   <li class = "user"><a href="cart" *ngIf="role !== merchant" (click)="addToCart(product.productId)" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                  <li class="delete" *ngIf="role === merchant"><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
+                  <li class="user" style="cursor:pointer;"><a *ngIf="role === merchant" (click)="deleteProduct(product.productId)" data-tip="delete"><i class="fa fa-trash"></i></a></li>
               </ul>
           </div>
           <br>

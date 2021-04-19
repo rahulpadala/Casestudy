@@ -26,8 +26,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 import { StockComponent } from './components/stock/stock.component';
-
+import { UpdateStockComponent } from './components/stock/update-stock/update-stock.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrdersComponent } from './components/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +48,12 @@ import { StockComponent } from './components/stock/stock.component';
     MerchantComponent,
     DeliveryAgentComponent,
     ProductItemComponent,
-    StockComponent
+    StockComponent,
+    UpdateStockComponent,
+    CheckoutComponent,
+    OrdersComponent
   ],
+  entryComponents:[UpdateStockComponent,OrdersComponent,CheckoutComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -56,7 +64,9 @@ import { StockComponent } from './components/stock/stock.component';
     BrowserAnimationsModule,
     MatSelectModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSidenavModule,
 
   ],
   providers: [[{

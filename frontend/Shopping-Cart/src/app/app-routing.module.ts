@@ -12,6 +12,7 @@ import { CartComponent } from './components/shopping-cart/cart/cart.component'
 import { ProductItemComponent } from './components/shopping-cart/product-list/product-item/product-item.component'
 import { AuthGuard } from './services/auth.guard'
 import { StockComponent } from './components/stock/stock.component'
+import { CheckoutComponent } from './components/checkout/checkout.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent,canActivate:[AuthGuard]},
   {path: 'product/:id', component:ProductItemComponent},
   {path: 'stock', component:StockComponent},
+  { path: 'checkout',component:CheckoutComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
 

@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,6 +52,11 @@ public class CartResource {
 	@PostMapping("addToCart/{cartId}/{productId}")
 	public void addToCart(@PathVariable("cartId") int cId,@PathVariable("productId") int pId) {
 		cartService.addToCart(cId,pId);
+	}
+	
+	@DeleteMapping("deleteCart/{cartId}")
+	public void deleteCart(@PathVariable("cartId") int cId){
+		cartService.deleteCart(cId);
 	}
 	
 

@@ -1,0 +1,40 @@
+<form #addForm="ngForm">
+  <div class="form-row">
+  <div class="form-group col-md-5">
+    <label for="productName">Full Name</label>
+    <input type="text" name="fullName" required ngModel={{address?.fullName}} class="form-control" id="fullName" placeholder="Full Name">
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-5">
+    <label for="inputPassword4">Mobile </label>
+    <input type="text" name="mobileNumber" required ngModel={{address?.mobileNumber}} class="form-control" id="mobileNumber" placeholder="+91 00000-00000">
+  </div>
+</div>       
+<div class="form-row">
+  <div class="form-group col-md-2.5">
+      <label for="inputAddress">Flat Number</label>
+      <input type="text" name="flatNumber" required ngModel={{address?.flatNumber}} class="form-control" id="flatNumber" placeholder="000">
+  </div>
+  <div class="form-group col-md-3">
+    <label for="inputAddress2">City </label>
+    <input type="text" name="city"  required ngModel={{address?.city}} class="form-control" id="city" placeholder="City">
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-3">
+    <label for="inputAddress2">State</label>
+    <input type="text" name="state" required ngModel={{address?.state}} class="form-control" id="state" placeholder="State">
+  </div>
+  <div class="form-group col-md-2.5">
+      <label for="inputAddress">Pincode</label>
+      <input type="text" name="pincode"  required ngModel={{address?.pincode}} class="form-control" id="pincode" placeholder="000000">
+  </div>
+</div>
+<button mat-raised-button color="primary" [disabled]="addForm.form.invalid" (click)="storeAddress(addForm.value)">Buy Now</button>    
+</form>
+
+
+
+                        
+

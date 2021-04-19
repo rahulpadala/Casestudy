@@ -1,5 +1,5 @@
 <div class="container"><a routerLink="">Home</a>
-    <div id="main-wrapper" class="container">
+    <div id="main-wrapper bg-secondary" class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10">
                 <div class="card border-0">
@@ -10,8 +10,6 @@
                                     <div class="mb-5">
                                         <h3 class="h4 font-weight-bold text-theme">Register</h3>
                                     </div>
-                                    <h6 class="h5 mb-0">Just Do Register.</h6>
-                                    <p class="text-muted mt-2 mb-5">If You Really Want To Know, Look In The Register.</p>
                                     <form #addForm="ngForm" (ngSubmit)="addNewCustomer(addForm)">
                                         <div class="form-group">
                                             <label for="yourName">Full Name</label>
@@ -28,10 +26,6 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Phone Number</label>
                                             <input type="text" ngModel name="mobileNumber" class="form-control" id="exampleInputPassword1" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">About</label>
-                                            <textarea ngModel name="about" rows="4" cols="50"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <p> Gender:

@@ -9,6 +9,7 @@ export interface Items
 {
     ProductName : string,
     productId:number,
+    productType:string,
     image : string,
     price : number,
     quantity: number

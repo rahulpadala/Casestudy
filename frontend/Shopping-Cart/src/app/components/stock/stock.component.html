@@ -1,0 +1,133 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bg-light">
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+      <a ngbNavLink> Update Product </a>
+      <ng-template ngbNavContent>
+        <div class="container bootstrap snippets bootdey">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="main-box no-header clearfix">
+                      <div class="main-box-body clearfix">
+                          <div class="table-responsive">
+                              <table class="table user-list">
+                                  <thead>
+                                      <tr>
+                                      <th><span>Product</span></th>
+                                      <th><span>Product ID</span></th>
+                                      <th><span>Product Type</span></th>
+                                      <th><span>Price</span></th>
+                                      <th>&nbsp;</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let pro of products">
+                                          <td>
+                                              <img src={{pro.image1}} alt="">
+                                              <a href="product/{{pro.productId}}">{{pro.productName}}</a>
+                                          </td>
+                                          <td>{{pro.productId}}</td>
+                                          <td>
+                                              <span class="label label-default">{{pro.productType}}</span>
+                                          </td>
+                                          <td>
+                                              {{pro.price}}
+                                          </td>
+                                          <td style="width: 20%;cursor: pointer;">
+                                              <a class="table-link text-info" (click)="update(pro.productId)">
+                                                  <span class="fa-stack">
+                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                  </span>
+                                              </a>
+                                              <a (click)="deleteProduct(pro.productId)" class="table-link danger">
+                                                  <span class="fa-stack">
+                                                      <i class="fa fa-square fa-stack-2x"></i>
+                                                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                  </span>
+                                              </a>
+                                          </td>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </ng-template>
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink> Add Product </a>
+      <ng-template ngbNavContent>
+        <form #addForm="ngForm" (ngSubmit)="addProduct(addForm)">
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label for="productName">Product Name</label>
+              <input type="text" name="productName" ngModel class="form-control" id="productName" placeholder="Product Name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label for="inputPassword4">Product Type</label>
+              <input type="text" name="productType" ngModel class="form-control" id="productType" placeholder="Product type">
+            </div>
+           <div class="form-group col-md-5">
+            <label for="inputAddress">Category</label>
+            <input type="text" name="category" ngModel class="form-control" id="category" placeholder="Product Category">
+           </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-10">
+              <label for="inputAddress2">Image 1</label>
+              <input type="text" name="image1"  ngModel class="form-control" id="image1" placeholder="Product Display Image ( 280x300 )">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="inputAddress2">Image 2</label>
+              <input type="text" name="image2" ngModel class="form-control"  value= "2" id="image2" placeholder="Product Image Slider 1 ( 700x300 )">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputAddress2">Image 3</label>
+              <input type="text" name="image3" ngModel class="form-control" id="image3" placeholder="Product Image Slider 2 ( 700x300 )">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputAddress2">Image 4</label>
+              <input type="text" name="image4" ngModel class="form-control" id="image4" placeholder="Product Image Slider 3 ( 700x300 )">
+            </div> 
+          </div>
+            
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="inputCity">Price </label>
+              <input type="text" name="price" ngModel class="form-control" id="price" placeholder=" Cost of Product ">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="inputState">Description</label>
+              <input type="text" name="description" ngModel class="form-control" id="description" placeholder=" About Product ">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                I agree that the product Uploading for sale now is in good quality. 
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </form>                 
+      </ng-template>
+    </li>
+    <!-- <li ngbNavItem>
+        <a ngbNavLink>Delete Product</a>
+        <ng-template ngbNavContent></ng-template>
+      </li>                         -->
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+
+</div>
+

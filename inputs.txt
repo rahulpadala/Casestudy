@@ -44,3 +44,142 @@ mongodb+srv://user:user123@cluster0.6t1pw.mongodb.net
                 .antMatchers("/order/api/hotel/book/get/**").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST")
                 .antMatchers("/report/api/report/order/**").hasAnyAuthority("OWNER", "MANAGER", "RECEPTIONIST")
                 .antMatchers("/report/api/report/owner/**").hasAuthority("OWNER")
+
+
+
+{
+    "productId": 123,
+    "productType": "Watch",
+    "productName": "Rolex Watch",
+    "category": "Electronic",
+    "rating": {
+        "1": 4.5,
+        "2": 5
+    },
+    "review": {
+        "1": "abc",
+        "2": "xyz"
+    },
+    "image": [
+        "https://images-eu.ssl-images-amazon.com/images/I/61E3KqH4z5L._SX300_SY300_QL70_ML2_.jpg",
+        "https://cdn.i-scmp.com/sites/default/files/styles/700x400/public/d8/images/methode/2020/05/11/e39a7ec2-9037-11ea-a674-527cfdef49ee_image_hires_130331.jpg?itok=cnCOxDBF&v=1589173417",
+        "https://media.truefacet.com/guide/wp-content/uploads/2019/02/xadult-analogue-break-404972-BODY-IMAGE.jpg.pagespeed.ic.VZcaPoBnlG.jpg",
+        "https://www.irepwatches.co/wp-content/uploads/2019/02/A.-Lange-S%C3%B6hne-Richard-Lange-Replica-Watches-700x400.jpg"
+    ],
+    "price": 5999,
+    "description": "Explore the Rolex collection of prestigious, high-precision timepieces.Rolex offers a wide assortment of Oyster Perpetual and Cellini watches to suit any wrist. Discover the broad selection of Rolex watches to find a perfect combination of style and functionality.",
+    "specification": {
+        "REFERENCE": "126200",
+        "MODEL CASE": "Oyster, 36 mm, Oystersteel",
+        "BEZEL": "Domed",
+        "WATER-RESISTANCE": "Waterproof to 100 metres / 330 feet"
+    }
+}
+
+{
+    "productId": 1234,
+    "productType": "Laptop",
+    "productName": "Dell 5567",
+    "category": "Electronic",
+    "rating": {
+        "1": 4.3,
+        "2": 5
+    },
+    "review": {
+        "1": "abc",
+        "2": "xyz"
+    },
+    "image": [
+        "https://i1.wp.com/iapple.in/wp-content/uploads/2021/01/lenovo-na-laptop-original-imaf9hu6b8khmnzz.jpeg?resize=280%2C300&ssl=1",
+        "https://english.cdn.zeenews.com/sites/default/files/2017/10/27/634352-dellaptop.jpg",
+        "https://ecomputertips.com/wp-content/uploads/2020/10/Dell-XPS-9380.jpg",
+        "https://www.evetech.co.za/repository/ProductImages/dell-inspiron-3576-8th-gen-core-i5-laptop-deal-700px-v2.jpg"
+    ],
+    "price": 60999,
+    "description": "best product for Students",
+    "specification": {
+        "abc": "xyz"
+    }
+}
+
+
+{
+    "productId": 1235,
+    "productType": "Television",
+    "productName": "Samsung Tv",
+    "category": "Electronic",
+    "rating": {
+        "1": 4.5,
+        "2": 5
+    },
+    "review": {
+        "1": "abc",
+        "2": "xyz"
+    },
+    "image": [
+        "https://homezene.com/wp-content/uploads/2020/10/Screenshot-2020-10-13-at-5.35.10-PM-280x300.png",
+        "https://www.reviews.in/wp-content/uploads/Best-49-Inches-Samsung-Full-HD-LED-Smart-TV-Review.png",
+        "https://energyboom.com/wp-content/uploads/2018/08/best-samsung-tv.jpg",
+        "https://i.pinimg.com/originals/49/39/5f/49395f03aff5986364c6d7b5d876b87c.jpg"
+    ],
+    "price": 25999,
+    "description": "Best Product from samsung",
+    "specification": {
+        "abc": "xyz"
+    }
+}
+
+
+{
+    "productId": 1236,
+    "productType": "Instrument",
+    "productName": "Yamaha Guitar",
+    "category": "Music",
+    "rating": {
+        "1": 4.5,
+        "2": 5
+    },
+    "review": {
+        "1": "abc",
+        "2": "xyz"
+    },
+    "image": [
+        "https://i.pinimg.com/originals/6c/06/c8/6c06c8b8dd07bcf8b9ccb59bef1bacd8.jpg",
+        "https://takelessons.com/blog/wp-content/uploads/2014/01/play-thousands-of-songs-using-these-guitar-chord-progressions.jpg",
+        "https://takelessons.com/blog/wp-content/uploads/2012/02/Practice-Tips-Exercises-and-Guitars-for-Small-Hands.jpg",
+        "https://www.ukulelefreak.com/wp-content/uploads/2020/04/Screenshot_20200409-155247-700x300.png"
+    ],
+    "price": 10999,
+    "description": "best Instruent for beginners",
+    "specification": {
+        "abc": "xyz"
+    }
+}
+
+{
+    "productId": 1237,
+    "productType": "Bag",
+    "productName": "Wildcraft Bag",
+    "category": "College Bag",
+    "rating": {
+        "1": 4.5,
+        "2": 5
+    },
+    "review": {
+        "1": "abc",
+        "2": "xyz"
+    },
+    "image": [
+        "https://i.pinimg.com/originals/02/be/09/02be099131468a78d5657fac7b28f326.jpg",
+        "https://miro.medium.com/max/1838/1*s9HEkq_6kLR-wyFkFf4rCQ.png",
+        "http://dummyimage.com/700x300/222222/fff.png&text=WILDCRAFT",
+        "https://miro.medium.com/max/1838/1*s9HEkq_6kLR-wyFkFf4rCQ.png"
+    ],
+    "price": 2999,
+    "description": "best bag for students",
+    "specification": {
+        "abc": "xyz"
+    }
+}
+
+

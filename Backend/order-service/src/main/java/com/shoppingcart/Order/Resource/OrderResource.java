@@ -48,7 +48,7 @@ public class OrderResource {
 	}
 
 	@GetMapping("/getAddByCustomerId/{id}")
-	public List<Address> getAddByCustomerId(@PathVariable("id") int id)
+	public Optional<Address> getAddByCustomerId(@PathVariable("id") int id)
 	{
 		return orderService.getAddByCustomerId(id);
 	}
@@ -60,9 +60,9 @@ public class OrderResource {
 	}
 
 	@PostMapping("/placeOrder/{id}")
-	public void placeOrder(@PathVariable("id") int id)
+	public void placeOrder(@PathVariable("id") int id,@RequestBody Address address)
 	{
-		orderService.placeOrder(id);
+		orderService.placeOrder(id,address);
 	}
 
 
@@ -76,7 +76,7 @@ public class OrderResource {
 		return orderService.getOrderByOrderId(id);
 	}
 
-	@PostMapping("storeAddress")
+	@PutMapping("/storeAddress")
 	public void storeAddress(@RequestBody Address address)
 	{
 		orderService.storeAddress(address);

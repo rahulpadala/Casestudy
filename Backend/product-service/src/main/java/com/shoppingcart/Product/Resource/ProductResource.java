@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shoppingcart.Product.Model.Product;
 //import com.shoppingcart.Product.Model.Products;
 import com.shoppingcart.Product.Service.ProductService;
+import com.shoppingcart.Product.Service.SequenceGeneratorService;
+
+
 
 @RestController
 @RequestMapping("/product")
@@ -26,9 +29,13 @@ public class ProductResource {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private SequenceGeneratorService sequenceGeneratorService;
+	
 	@PostMapping("/addProduct")
 	public void addProducts(@RequestBody Product pro)
 	{
+		pro.setProductId(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
 		productService.addProducts(pro);
 	}
 	

@@ -45,8 +45,8 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public List<Address> getAddByCustomerId(int id) {
-		return addressRepository.findByCustomerId(id);
+	public Optional<Address> getAddByCustomerId(int id) {
+		return addressRepository.findById(id);
 	}
 
 	@Override
@@ -55,14 +55,13 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void placeOrder(int id) {
+	public void placeOrder(int id, Address address) {
 		//Address
 		Orders order = new Orders();
-		Address address = new Address();
 		List<Product> products = new ArrayList<Product>();
 		ResponseEntity<Cart> cart = restTemplate.getForEntity("http://Cart-Service/cart/getCartById/{id}", Cart.class,id);
 		order.setCustomerId(cart.getBody().getCartId());
-		order.setAmountPaid(cart.getBody().getTotalPrice());
+		order.setAmount(cart.getBody().getTotalPrice());
 		order.setOrderStatus("Ordered");
 		order.setQuantity(cart.getBody().getItems().size());
 		order.setAddress(address);
@@ -76,6 +75,7 @@ public class OrderServiceImpl implements OrderService{
 		order.setProduct(products);
 		order.setOrderDate(java.time.LocalDate.now());
 		orderRepository.save(order);
+		restTemplate.delete("http://Cart-Service/cart/deleteCart/{id}",id);
 	}
 
 	@Override

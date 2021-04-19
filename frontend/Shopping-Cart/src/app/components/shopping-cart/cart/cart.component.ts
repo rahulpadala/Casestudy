@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from 'src/app/models/cart-item';
 import { Items } from 'src/app/models/cart-item'
@@ -7,6 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { LoginService } from 'src/app/services/login.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
+import { CheckoutComponent } from '../../checkout/checkout.component';
 // import { CartItem } from 'src/app/models/cart-item';
 
 @Component({
@@ -24,13 +26,15 @@ export class CartComponent implements OnInit{
   public cid : number
   public loggedIn = false;
   public len = 0;
+  public cost : string;
 
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
     private productService : ProductService,
     private loginservice : LoginService,
-    private router:Router
+    private router:Router,
+    private dialog : MatDialog
     
   ) { }
 
@@ -60,13 +64,20 @@ export class CartComponent implements OnInit{
     }
   }
 
+  public checkout(Cart){
+    this.dialog.open(CheckoutComponent,{
+      data:{'Cart':Cart}
+    });
+  }
+
   getCart(){
     this.cartService.getCart().subscribe(
       (response:CartItem)=>{
         this.Cart = response;
         this.cid = response.cartId;
         this.cartItems = response.items;
-        this.len=response.items.length; 
+        this.len=response.items.length;
+        this.costs(this.Cart.totalPrice); 
         console.log(response);
         
       },error=>{
@@ -81,13 +92,27 @@ export class CartComponent implements OnInit{
     this.cartService.updateCart(this.cid,id).subscribe(
       (response:any)=>
       {
-        location.reload();
+        this.ngOnInit();
       },error=>{
         console.log(error);
         }
     );
 
   }
+
+
+  
+  costs(price:number){
+    var x:string=price.toString();
+    var lastThree = x.substring(x.length-3);
+    var otherNumbers = x.substring(0,x.length-3);
+    if(otherNumbers != '')
+        lastThree = ',' + lastThree;
+    var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+    this.cost = res;
+  }
+
+
 
 
   // items(){

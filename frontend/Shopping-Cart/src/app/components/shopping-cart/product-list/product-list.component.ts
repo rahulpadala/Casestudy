@@ -47,6 +47,17 @@ export class ProductListComponent implements OnInit{
     );
   }
 
+  public deleteProduct(id:number){
+    this.productService.deleteProduct(id).subscribe(
+      (response)=>{
+        location.reload();
+      },
+      (error: HttpErrorResponse)=> {
+        alert(error.message);
+      }
+    )
+  }
+
 
   public searchProducts(key: string): void {
     const results: Product[] = [];
