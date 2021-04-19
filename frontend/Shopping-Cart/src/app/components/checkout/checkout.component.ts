@@ -32,7 +32,7 @@ export class CheckoutComponent implements OnInit {
     this.orderService.getAddress(id).subscribe(
       (response:Address)=>{
         console.log(response);
-          this.address = response; 
+          this.address = response;
       }
     );
   }

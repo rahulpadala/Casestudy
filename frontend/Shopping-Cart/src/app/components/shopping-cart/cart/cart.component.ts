@@ -77,7 +77,7 @@ export class CartComponent implements OnInit{
         this.cid = response.cartId;
         this.cartItems = response.items;
         this.len=response.items.length;
-        this.costs(this.Cart.totalPrice); 
+        this.costs(this.Cart.totalPrice);
         console.log(response);
         
       },error=>{

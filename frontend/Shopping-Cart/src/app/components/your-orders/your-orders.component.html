@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row" *ngFor="let order of orders; let i=index">
+        <div class="col-md-10" style="margin: auto;">
+            <mat-accordion >
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Order {{i+1}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Total Cost : ₹{{order.amount}}
+                   </mat-panel-description>
+                </mat-expansion-panel-header>
+                
+ <hr>
+ <div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th>Order Id: {{order.orderId}}</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th class="text-danger" *ngIf="order.orderStatus===ordered">{{order.orderStatus}}</th>
+                                    <th class="text-success" *ngIf="order.orderStatus===delivered">{{order.orderStatus}}</th>
+                                </tr>
+                                <br>
+                                <tr>
+                                <th><span>Product</span></th>
+                                <th ><span>Product Id</span></th>
+                                <th class="text-center"><span>Price</span></th>
+                                <th><span>Quantity</span></th>
+                                <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let items of order.product">
+                                    <td>
+                                        <img src="{{items.img}}" alt="product image">
+                                        <a href="product/{{items.productId}}" >{{items.productName}}</a>
+                                        <span class="user-subhead"></span>
+                                    </td>
+                                    <td>{{items.productId}}</td>
+                                    <td class="text-center">
+                                        <span class="label label-default">{{items.price}}</span>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="table-link text-dark">
+                                            <span class="fa-stack">
+                                                <div style="text-align: center;">{{items.quantity}}</div>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+            <br>
+        </div>
+        
+    </div>
+
+    
+    
+</div>
+

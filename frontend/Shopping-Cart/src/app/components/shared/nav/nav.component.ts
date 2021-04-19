@@ -17,6 +17,7 @@ export class NavComponent implements OnInit {
 
   public loggedIn=false;
   public role : string= null;
+  public name : string;
   public id : number;
   public customer = false;
   public merchant = false;
@@ -59,6 +60,7 @@ export class NavComponent implements OnInit {
         this.role=response.role;
         //console.log(this.role);
         this.id=response.profileId;
+        this.name = response.fullName;
         this.isCustomer();
         this.isMerchant();
         this.isDeliveryAgent();
@@ -102,6 +104,11 @@ export class NavComponent implements OnInit {
   gotoCart()
   {
     this.router.navigate(['cart'])
+  }
+
+  orders()
+  {
+    this.router.navigate(['orders'])
   }
 
 

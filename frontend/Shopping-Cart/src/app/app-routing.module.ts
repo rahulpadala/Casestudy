@@ -13,6 +13,7 @@ import { ProductItemComponent } from './components/shopping-cart/product-list/pr
 import { AuthGuard } from './services/auth.guard'
 import { StockComponent } from './components/stock/stock.component'
 import { CheckoutComponent } from './components/checkout/checkout.component'
+import { YourOrdersComponent } from './components/your-orders/your-orders.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'product/:id', component:ProductItemComponent},
   {path: 'stock', component:StockComponent},
   { path: 'checkout',component:CheckoutComponent },
+  { path: 'orders',component:YourOrdersComponent ,canActivate:[AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ]
 

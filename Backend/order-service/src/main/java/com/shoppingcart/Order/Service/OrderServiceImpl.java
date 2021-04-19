@@ -70,6 +70,9 @@ public class OrderServiceImpl implements OrderService{
 			Product product = new Product();
 			product.setProductId(cart.getBody().getItems().get(i).getProductId());
 			product.setProductName(cart.getBody().getItems().get(i).getProductName());
+			product.setImg(cart.getBody().getItems().get(i).getImage());
+			product.setQuantity(cart.getBody().getItems().get(i).getQuantity());
+			product.setPrice(cart.getBody().getItems().get(i).getPrice());
 			products.add(product);
 		}
 		order.setProduct(products);

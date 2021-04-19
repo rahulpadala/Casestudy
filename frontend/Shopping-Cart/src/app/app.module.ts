@@ -32,6 +32,10 @@ import { UpdateStockComponent } from './components/stock/update-stock/update-sto
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { YourOrdersComponent } from './components/your-orders/your-orders.component';
+import { ProfileComponent } from './components/profile/profile.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +55,9 @@ import { OrdersComponent } from './components/orders/orders.component';
     StockComponent,
     UpdateStockComponent,
     CheckoutComponent,
-    OrdersComponent
+    OrdersComponent,
+    YourOrdersComponent,
+    ProfileComponent
   ],
   entryComponents:[UpdateStockComponent,OrdersComponent,CheckoutComponent],
   imports: [
@@ -67,6 +73,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     MatButtonModule,
     MatDialogModule,
     MatSidenavModule,
+    MatExpansionModule,
 
   ],
   providers: [[{
