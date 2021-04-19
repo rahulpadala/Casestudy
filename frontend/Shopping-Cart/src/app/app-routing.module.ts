@@ -14,6 +14,8 @@ import { AuthGuard } from './services/auth.guard'
 import { StockComponent } from './components/stock/stock.component'
 import { CheckoutComponent } from './components/checkout/checkout.component'
 import { YourOrdersComponent } from './components/your-orders/your-orders.component'
+import { ProfileComponent } from './components/profile/profile.component'
+import { DeliveryComponent } from './components/delivery/delivery.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path: 'stock', component:StockComponent},
   { path: 'checkout',component:CheckoutComponent },
   { path: 'orders',component:YourOrdersComponent ,canActivate:[AuthGuard] },
+  { path: 'profile',component:ProfileComponent ,canActivate:[AuthGuard] },
+  { path: 'delivery',component:DeliveryComponent ,canActivate:[AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ]
 

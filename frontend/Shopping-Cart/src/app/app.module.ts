@@ -34,7 +34,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { YourOrdersComponent } from './components/your-orders/your-orders.component';
-import { ProfileComponent } from './components/profile/profile.component'
+import { ProfileComponent } from './components/profile/profile.component';
+import { DeliveryComponent } from './components/delivery/delivery.component'
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ProfileComponent } from './components/profile/profile.component'
     CheckoutComponent,
     OrdersComponent,
     YourOrdersComponent,
-    ProfileComponent
+    ProfileComponent,
+    DeliveryComponent
   ],
   entryComponents:[UpdateStockComponent,OrdersComponent,CheckoutComponent],
   imports: [

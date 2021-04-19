@@ -34,6 +34,7 @@ export class UpdateStockComponent implements OnInit {
       (response: Product) => {
         console.log(response);
         window.location.href="/stock"
+        
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

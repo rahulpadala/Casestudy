@@ -5,10 +5,7 @@ body{
     padding-top: 20px;
 }
 
-.mat-expansion-panel-header-description {
-    display: flex;
-    justify-content: flex-end;
-  }
+
 
 .center {
     margin: auto;

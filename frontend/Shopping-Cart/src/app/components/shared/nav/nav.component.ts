@@ -111,6 +111,11 @@ export class NavComponent implements OnInit {
     this.router.navigate(['orders'])
   }
 
+  profile()
+  {
+    this.router.navigate(['profile'])
+  }
+
 
 
   isMerchant(){

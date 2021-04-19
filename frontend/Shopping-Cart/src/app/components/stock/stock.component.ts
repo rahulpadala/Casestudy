@@ -34,7 +34,7 @@ export class StockComponent implements OnInit {
       (response: Product) => {
         console.log(response);
         addForm.reset();
-        window.location.href="/shop"
+        window.location.href="/shop";
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

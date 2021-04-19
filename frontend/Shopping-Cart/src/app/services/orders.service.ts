@@ -20,6 +20,10 @@ export class OrdersService {
     return this.http.post<any>(`${this.apiUrl}/order/placeOrder/${id}`,address)
   }
 
+  public getOrders():Observable<any>{
+    return this.http.get(`${this.apiUrl}/order/viewAllOrders`)
+  }
+
 
   public getAddress(id:number): Observable<any>{
     return this.http.get(`${this.apiUrl}/order/getAddByCustomerId/${id}`)

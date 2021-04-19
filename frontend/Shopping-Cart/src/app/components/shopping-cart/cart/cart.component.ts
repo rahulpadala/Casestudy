@@ -99,9 +99,6 @@ export class CartComponent implements OnInit{
     );
 
   }
-
-
-  
   costs(price:number){
     var x:string=price.toString();
     var lastThree = x.substring(x.length-3);
