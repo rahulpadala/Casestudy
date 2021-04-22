@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  model: any = {}
 
 
   public  token: Token | undefined;
@@ -26,7 +27,7 @@ public login(loginForm:NgForm): void{
   this.loginService.login(loginForm.value).subscribe(
     (response:any)=>{
       this.token=response;
-      this.loginService.loginUser(this.token.token);
+      this.loginService.loginUser(this.token);
       loginForm.reset();
       window.location.href="/shop"
      },

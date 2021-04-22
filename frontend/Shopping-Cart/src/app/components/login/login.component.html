@@ -10,13 +10,13 @@
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
           <div class="form-group">
             <label for="username">Username</label>
-            <input id="email" ngModel class="form-control" name="emailId" />
+            <input id="email" ngModel class="form-control" name="emailId"   [ngClass]="{ 'is-invalid': username.touched && username.invalid }"  #username="ngModel" [(ngModel)]="model.username" required  />
             <span class="invalid-feedback">Username can't be blank.</span>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" ngModel id="password" name="password" class="form-control"/>
+            <input type="password" ngModel id="password" name="password" class="form-control" [ngClass]="{ 'is-invalid': password.touched && password.invalid }" #password="ngModel" [(ngModel)]="model.password" required/>
             <span class="invalid-feedback">Password can't be blank.</span>
           </div>
 

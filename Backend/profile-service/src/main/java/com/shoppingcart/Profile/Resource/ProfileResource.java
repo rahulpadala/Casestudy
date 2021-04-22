@@ -72,7 +72,7 @@ public class ProfileResource {
 	@DeleteMapping("/deleteProfile/{id}")
 	public void deleteProfileById(@PathVariable("id") int Id)
 	{
-		profileService.deleteProfileById(Id);;
+		profileService.deleteProfileById(Id);
 	}
 	
 

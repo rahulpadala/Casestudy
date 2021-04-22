@@ -38,19 +38,9 @@ export class NavComponent implements OnInit {
     this.loginservice.logout();
   }
 
-  addNewCustomer()
+  addNewUser(type:string)
   {
-    this.router.navigate(['customer'])
-  }
-
-  addNewMerchant()
-  {
-    this.router.navigate(['merchant'])
-  }
-
-  addNewDeliveryAgent()
-  {
-    this.router.navigate(['deliveryAgent'])
+    this.router.navigate(['register',type]);
   }
 
   assignRole()
@@ -79,6 +69,8 @@ export class NavComponent implements OnInit {
       console.log(this.customer);
     }   
   }
+
+
 
   // public addCart(id:number):void{
   //   console.log("came to nav");

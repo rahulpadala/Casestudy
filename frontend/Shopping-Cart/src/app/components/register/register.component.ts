@@ -45,12 +45,29 @@ export class RegisterComponent implements OnInit {
 
   public name : string;
   
-
-  constructor() { }
+  constructor(private userService: UserprofileService , private route: ActivatedRoute) { }
 
   ngOnInit() {
-   
+    this.name = this.route.snapshot.params['name'];
+    console.log(this.name);
   }
+
+  public addNewUser(addForm: NgForm): void{
+    // document.getElementById('add-employee-form').click();
+    this.userService.addNewCustomer(addForm.value,this.name).subscribe(
+      (response: User) => {
+        console.log(response);
+        addForm.reset();
+        window.location.href="/login"
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+
 
   
 }

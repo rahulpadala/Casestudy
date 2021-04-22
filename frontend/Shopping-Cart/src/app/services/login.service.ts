@@ -18,13 +18,15 @@ export class LoginService {
     return this.httpClient.post<Login>(`${this.apiServerUrl}/login/authenticate`,login);
   }
 
-  public loginUser(token: string){
-    localStorage.setItem("token",token)
+  public loginUser(token: Token){
+    localStorage.setItem("token",token.token)
+    localStorage.setItem("role",token.user.role)
     return true;
   }
 
   public logout(){
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     location.reload();
   }
 
@@ -35,6 +37,33 @@ export class LoginService {
     } else {
       return true;
     }
+  }
+
+  isCustomer() {
+    let role = localStorage.getItem("role");
+    if (role === "Customer"){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isMerchant(){
+    let role = localStorage.getItem("role");
+    if(role === "Merchant")
+    {
+      return true;
+    }
+    return false;
+  }
+
+  isDeliveryAgent(){
+    let role = localStorage.getItem("role");
+    if(role === "DeliveryAgent")
+    {
+      return true;
+    }
+    return false;
   }
 
   getToken()

@@ -71,7 +71,7 @@ public class OrderResource {
 	//	}
 
 	@GetMapping("getOrderByOrderId/{id}")
-	public Optional<Orders> getOrderByOrderId(@PathVariable("id") int id)
+	public Orders getOrderByOrderId(@PathVariable("id") String id)
 	{
 		return orderService.getOrderByOrderId(id);
 	}
@@ -83,13 +83,13 @@ public class OrderResource {
 	}
 
 	@PutMapping("/changeOrderStatus/{id}")
-	public void changeOrderStatus(String status,@PathVariable("id") int id) 
+	public void changeOrderStatus(@RequestBody String status,@PathVariable("id") String id) 
 	{
 		orderService.changeOrderStatus(status,id);
 	}
 
 	@DeleteMapping("/deleteOrder/{id}")
-	public ResponseEntity<String> deleteOrder(@PathVariable("id") int id)
+	public ResponseEntity<String> deleteOrder(@PathVariable("id") String id)
 	{
 		return new ResponseEntity<String>(orderService.deleteOrder(id),HttpStatus.OK);
 	}

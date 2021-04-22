@@ -111,10 +111,13 @@ export class ProductListComponent implements OnInit{
   {
     this.cartService.addProductToCart(this.Cid,Pid).subscribe(
       (response) =>{
-      },(error: HttpErrorResponse)=> {
-        alert(error.message);
       }
     );
+  }
+
+  productView(id:number)
+  {
+    this.router.navigate(['product',id]);
   }
 
 

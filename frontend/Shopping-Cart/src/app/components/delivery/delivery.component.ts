@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Orders } from 'src/app/models/orders';
 import { OrdersService } from 'src/app/services/orders.service';
 
@@ -14,8 +15,10 @@ export class DeliveryComponent implements OnInit {
   public cost: string;
   public ordered = "Ordered";
   public delivered = "Delivered";
+  public message = "Out for Delivery";
+  public success = ":)";
 
-  constructor(private orderService : OrdersService) { }
+  constructor(private orderService : OrdersService,private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getOrders();
@@ -34,6 +37,12 @@ export class DeliveryComponent implements OnInit {
     );
   }
 
+  openSnackBar(message: string , action : string) {
+    this._snackBar.open(message,action, {
+      duration: 2000,
+    });
+  }
+
   costs(price:number){
     var x:string=price.toString();
     var lastThree = x.substring(x.length-3);
@@ -41,6 +50,18 @@ export class DeliveryComponent implements OnInit {
     if(otherNumbers != '')
         lastThree = ',' + lastThree;
     this.cost = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+  }
+
+  deliver(oid:string){
+    console.log(oid);
+    this.orderService.changeOrderStatus(this.delivered,oid).subscribe(
+      (response:any)=>{
+        this.ngOnInit();
+      },(error)=>{
+        console.log(error);
+      }
+
+    );
   }
 
 }

@@ -92,7 +92,12 @@ export class CartComponent implements OnInit{
     this.cartService.updateCart(this.cid,id).subscribe(
       (response:any)=>
       {
-        this.ngOnInit();
+        if(this.Cart.items.length==0){
+          location.reload();
+        }else{
+          this.ngOnInit();
+        }
+        
       },error=>{
         console.log(error);
         }

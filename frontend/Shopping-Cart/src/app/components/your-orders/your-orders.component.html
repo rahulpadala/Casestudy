@@ -9,7 +9,7 @@
                     Order {{i+1}}
                   </mat-panel-title>
                   <mat-panel-description>
-                    Total Cost : ₹{{order.amount}}
+                    Order Date : {{order.orderDate}}
                    </mat-panel-description>
                 </mat-expansion-panel-header>
                 
@@ -35,7 +35,7 @@
                                 <th ><span>Product Id</span></th>
                                 <th class="text-center"><span>Price</span></th>
                                 <th><span>Quantity</span></th>
-                                <th>&nbsp;</th>
+                                <!-- <th>&nbsp;</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,6 +57,13 @@
                                         </a>
                                     </td>
                                 </tr>
+                                <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td><h6 class="text-primary">Cost : ₹{{order.amount}}</h6> </td>
+                                
+                                </tr>    
                             </tbody>
                         </table>
                     </div>

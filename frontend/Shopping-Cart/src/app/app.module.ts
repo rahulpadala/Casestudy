@@ -13,9 +13,6 @@ import { CartComponent } from './components/shopping-cart/cart/cart.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { CustomerComponent } from './components/register/customer/customer.component';
-import { MerchantComponent } from './components/register/merchant/merchant.component';
-import { DeliveryAgentComponent } from './components/register/delivery-agent/delivery-agent.component';
 import { ProductItemComponent } from './components/shopping-cart/product-list/product-item/product-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { AuthInterceptor } from './services/auth.interceptor';
@@ -35,7 +32,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { YourOrdersComponent } from './components/your-orders/your-orders.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { DeliveryComponent } from './components/delivery/delivery.component'
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { UnauthorizedComponent } from './components/shared/unauthorized/unauthorized.component'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UpdateProfileComponent } from './components/profile/update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +49,6 @@ import { DeliveryComponent } from './components/delivery/delivery.component'
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    CustomerComponent,
-    MerchantComponent,
-    DeliveryAgentComponent,
     ProductItemComponent,
     StockComponent,
     UpdateStockComponent,
@@ -59,7 +56,9 @@ import { DeliveryComponent } from './components/delivery/delivery.component'
     OrdersComponent,
     YourOrdersComponent,
     ProfileComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    UnauthorizedComponent,
+    UpdateProfileComponent
   ],
   entryComponents:[UpdateStockComponent,OrdersComponent,CheckoutComponent],
   imports: [
@@ -76,6 +75,7 @@ import { DeliveryComponent } from './components/delivery/delivery.component'
     MatDialogModule,
     MatSidenavModule,
     MatExpansionModule,
+    MatSnackBarModule,
 
   ],
   providers: [[{

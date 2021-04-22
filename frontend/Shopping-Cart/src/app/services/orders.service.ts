@@ -37,6 +37,10 @@ export class OrdersService {
     return this.http.get(`${this.apiUrl}/order/getOrderByCustomerId/${id}`)
   }
 
+  public changeOrderStatus(status:string,id:string){
+    return this.http.put(`${this.apiUrl}/order/changeOrderStatus/${id}`,status);
+  }
+
   
 
   

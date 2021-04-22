@@ -97,9 +97,9 @@ public class ProfileServiceImpl implements ProfileService,Role{
 
 	@Override
 	public void deleteProfileById(int id) {
-		if(profileRepository.findById(id)==null)
+		if((profileRepository.findById(id)).isEmpty())
 		{
-			throw new ResourceNotFoundException("No User found to update with Id "+id);
+			throw new ResourceNotFoundException("No User found to delete with Id "+id);
 		}
 		profileRepository.deleteById(id);
 	}

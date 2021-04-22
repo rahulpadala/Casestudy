@@ -18,9 +18,9 @@
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-primary" *ngIf="!loggedIn" id="dropdownBasic1" ngbDropdownToggle>Register</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click)="addNewCustomer()">Customer</button>
-            <button ngbDropdownItem (click)="addNewMerchant()">Merchant</button>
-            <button ngbDropdownItem (click)="addNewDeliveryAgent()">Delivery-Agent</button>
+            <button ngbDropdownItem (click)="addNewUser('Customer')">Customer</button>
+            <button ngbDropdownItem (click)="addNewUser('Merchant')">Merchant</button>
+            <button ngbDropdownItem (click)="addNewUser('DeliveryAgent')">Delivery-Agent</button>
           </div>
         </div>
             <div ngbDropdown class="d-inline-block bg-light" *ngIf="loggedIn" >

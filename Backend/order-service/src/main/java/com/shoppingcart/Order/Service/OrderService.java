@@ -21,12 +21,12 @@ public interface OrderService {
 
 	void placeOrder(int id, Address address);
 
-	Optional<Orders> getOrderByOrderId(int id);
+	Orders getOrderByOrderId(String id);
 
 	void storeAddress(Address address);
 
-	void changeOrderStatus(String status, int id);
+	void changeOrderStatus(String status, String id);
 
-	String deleteOrder(int id);
+	String deleteOrder(String id);
 
 }

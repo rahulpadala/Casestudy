@@ -1,5 +1,5 @@
 export interface Orders{
-    orderId : number;
+    orderId : string;
     orderDate : Date;
     amount : number;
     modeOfPayment : string;

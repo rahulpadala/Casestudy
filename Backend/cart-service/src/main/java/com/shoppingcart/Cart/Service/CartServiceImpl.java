@@ -126,6 +126,10 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void deleteCart(int cId) {
+		if(cartRepository.findByCartId(cId)==null)
+		{
+			throw new ResourceNotFoundException("No Cart Found with id "+cId);
+		}
 		cartRepository.deleteById(cId);
 	}
 	

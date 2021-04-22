@@ -22,16 +22,9 @@ export class UserprofileService {
     return this.http.get<User>(`${this.apiUrl}/token/user`);
      }
 
-  public addNewCustomer(userprofile: User): Observable<User>{
-    return this.http.post<User>(`${this.apiUrl}/profile/addCustomer`,userprofile);
-  }
-
-  public addNewMerchant(userprofile: User): Observable<User>{
-    return this.http.post<User>(`${this.apiUrl}/profile/addMerchant`,userprofile);
-  }
-
-  public addNewDeliveryAgent(userprofile: User): Observable<User>{
-    return this.http.post<User>(`${this.apiUrl}/profile/addDeliveryAgent`,userprofile);
+  public addNewCustomer(userprofile: User, role: string): Observable<User>{
+    console.log(role);
+    return this.http.post<User>(this.apiUrl+"/profile/add"+role ,userprofile);
   }
 
 }
