@@ -5,10 +5,20 @@ import { environment } from 'src/environments/environment';
 import { Address } from '../models/address';
 import { CartItem } from '../models/cart-item';
 
+
+function _window() : any {
+ 
+  return window;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
+
+  get nativeWindow() : any {
+    return _window();
+ }
 
   private apiUrl = environment.apiBaseUrl;
 

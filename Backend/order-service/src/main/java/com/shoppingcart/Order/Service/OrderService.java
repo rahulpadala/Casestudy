@@ -29,4 +29,6 @@ public interface OrderService {
 
 	String deleteOrder(String id);
 
+	void changePaymentMethod(String method, String id);
+
 }

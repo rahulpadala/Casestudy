@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row" *ngFor="let order of orders; let i=index">
+    <div class="row" *ngFor="let order of orders.slice().reverse(); let i=index">
         <div class="col-md-10" style="margin: auto;">
             <mat-accordion >
                 <mat-expansion-panel (opened)="panelOpenState = true"

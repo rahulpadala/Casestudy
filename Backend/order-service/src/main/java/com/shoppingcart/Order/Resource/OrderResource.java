@@ -87,6 +87,12 @@ public class OrderResource {
 	{
 		orderService.changeOrderStatus(status,id);
 	}
+	
+	@PutMapping("/changePaymentMethod/{id}")
+	public void changePaymentMethod(@RequestBody String method,@PathVariable("id") String id) 
+	{
+		orderService.changePaymentMethod(method,id);
+	}
 
 	@DeleteMapping("/deleteOrder/{id}")
 	public ResponseEntity<String> deleteOrder(@PathVariable("id") String id)

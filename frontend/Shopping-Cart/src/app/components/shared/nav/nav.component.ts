@@ -19,10 +19,12 @@ export class NavComponent implements OnInit {
   public role : string= null;
   public name : string;
   public id : number;
+  public len : number;
   public customer = false;
   public merchant = false;
   public deliveryAgent=false;
   public usercart : CartItem;
+  hidden = false;
 
   constructor(private loginservice:LoginService,private router: Router,private user: UserprofileService,private cart: CartService) { }
 
@@ -66,8 +68,13 @@ export class NavComponent implements OnInit {
       this.customer = true;
       //this.addCart(this.id);
       this.addCart();
+      this.getCart();
       console.log(this.customer);
     }   
+  }
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
   }
 
 
@@ -86,6 +93,7 @@ export class NavComponent implements OnInit {
   public addCart():void{
     this.cart.generateCart().subscribe(
     (response:CartService)=>{
+      response
     },
    (error:HttpErrorResponse)=>{
            alert(error.message);
@@ -106,6 +114,18 @@ export class NavComponent implements OnInit {
   profile()
   {
     this.router.navigate(['profile'])
+  }
+
+  getCart(){
+    this.cart.getCart().subscribe(
+      (response:CartItem)=>{
+        this.len=response.items.length;
+        console.log(response);       
+      },error=>{
+        this.router.navigate(['error'])
+          }
+    );
+
   }
 
 

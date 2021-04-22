@@ -110,6 +110,18 @@ public class OrderServiceImpl implements OrderService{
 		order.setOrderStatus(status);
 		orderRepository.save(order);
 	}
+	
+	@Override
+	public void changePaymentMethod(String method, String id) {
+		if((orderRepository.findById(id)).isEmpty())
+		{
+			throw new ResourceNotFoundException("Order not found with Id "+id +" for changing the status");
+		}
+		Orders order = new Orders();
+		order = orderRepository.findByOrderId(id);
+		order.setModeOfPayment(method);
+		orderRepository.save(order);
+	}
 
 	@Override
 	public String deleteOrder(String id) {
@@ -120,6 +132,8 @@ public class OrderServiceImpl implements OrderService{
 		orderRepository.deleteById(id);
 		return "Order Deleted";
 	}
+
+	
 
 }
 

@@ -35,6 +35,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { UnauthorizedComponent } from './components/shared/unauthorized/unauthorized.component'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatBadgeModule} from '@angular/material/badge';
 import { UpdateProfileComponent } from './components/profile/update-profile/update-profile.component';
 
 @NgModule({
@@ -76,6 +77,7 @@ import { UpdateProfileComponent } from './components/profile/update-profile/upda
     MatSidenavModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatBadgeModule,
 
   ],
   providers: [[{
