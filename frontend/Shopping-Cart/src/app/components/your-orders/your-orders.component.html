@@ -26,7 +26,7 @@
                                     <th>Order Id: {{order.orderId}}</th>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
-                                    <th class="text-danger" *ngIf="order.orderStatus===ordered">{{order.orderStatus}}</th>
+                                    <th class="text-warning" *ngIf="order.orderStatus===ordered">{{order.orderStatus}}</th>
                                     <th class="text-success" *ngIf="order.orderStatus===delivered">{{order.orderStatus}}</th>
                                 </tr>
                                 <br>
@@ -58,7 +58,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                <td><a class="text-warning" (click)="delete(order.orderId); openSnackBar(message,success)" style="cursor: pointer;"><b> DELETE </b></a></td>
+                                <td><a class="text-danger" *ngIf="order.orderStatus===ordered" [routerLink]="['/shop']" (click)="delete(order.orderId); openSnackBar(message,success)" style="cursor: pointer;"><b> DELETE </b></a></td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td><h6 class="text-primary">Cost : ₹{{order.amount}}</h6> </td>

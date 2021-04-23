@@ -39,6 +39,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { UpdateProfileComponent } from './components/profile/update-profile/update-profile.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSnackBarModule,
     MatBadgeModule,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
 
   ],
   providers: [[{

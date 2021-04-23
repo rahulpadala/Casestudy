@@ -106,6 +106,13 @@ export class NavComponent implements OnInit {
     this.router.navigate(['cart'])
   }
 
+  scrollDown(){
+    window.scroll({
+              top: document.body.scrollHeight,
+              behavior: 'smooth'
+          });
+  }
+
   profile()
   {
     this.router.navigate(['profile'])

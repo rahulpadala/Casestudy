@@ -53,7 +53,7 @@ export class YourOrdersComponent implements OnInit {
   delete(id:string){
     this.orderService.deleteOrder(id).subscribe(
       (response)=>{
-        this.ngOnInit();
+        window.location.href="/shop";
       }
     );
   }
