@@ -58,7 +58,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                <td>&nbsp;</td>
+                                <td><a class="text-warning" (click)="delete(order.orderId); openSnackBar(message,success)" style="cursor: pointer;"><b> DELETE </b></a></td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td><h6 class="text-primary">Cost : ₹{{order.amount}}</h6> </td>

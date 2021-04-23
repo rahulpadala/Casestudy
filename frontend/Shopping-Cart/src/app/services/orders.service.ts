@@ -51,6 +51,10 @@ export class OrdersService {
     return this.http.put(`${this.apiUrl}/order/changeOrderStatus/${id}`,status);
   }
 
+  public deleteOrder(id: string){
+    return this.http.delete(`${this.apiUrl}/order/deleteOrder/${id}`)
+  }
+
   
 
   

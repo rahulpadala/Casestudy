@@ -23,8 +23,11 @@ export class UserprofileService {
      }
 
   public addNewCustomer(userprofile: User, role: string): Observable<User>{
-    console.log(role);
     return this.http.post<User>(this.apiUrl+"/profile/add"+role ,userprofile);
+  }
+
+  public updateProfile(userProfile:User){
+    return this.http.put<User>(`${this.apiUrl}/profile/updateProfile`,userProfile);
   }
 
 }

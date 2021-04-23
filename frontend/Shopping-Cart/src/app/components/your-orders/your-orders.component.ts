@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Orders } from 'src/app/models/orders';
 import { User } from 'src/app/models/userprofile';
 import { OrdersService } from 'src/app/services/orders.service';
@@ -17,8 +18,10 @@ export class YourOrdersComponent implements OnInit {
   public cost: string;
   public ordered = "Ordered";
   public delivered = "Delivered";
+  public message = "Order Deleted Successfully";
+  public success = ":(";
 
-  constructor(private orderService : OrdersService,private user : UserprofileService) { }
+  constructor(private orderService : OrdersService,private user : UserprofileService,private _snackBar: MatSnackBar) { }
 
 
   ngOnInit() {
@@ -45,6 +48,20 @@ export class YourOrdersComponent implements OnInit {
       }
 
     );
+  }
+
+  delete(id:string){
+    this.orderService.deleteOrder(id).subscribe(
+      (response)=>{
+        this.ngOnInit();
+      }
+    );
+  }
+
+  openSnackBar(message: string , action : string) {
+    this._snackBar.open(message,action, {
+      duration: 2000,
+    });
   }
 
   costs(price:number){

@@ -91,7 +91,7 @@ public class ProfileServiceImpl implements ProfileService,Role{
 		if(profileRepository.findByEmailId(uP.getEmailId())==null){
 			throw new InputErrorException("No User found to update with Email Id "+uP.getEmailId());
 		}
-		uP.setPassword(passwordEncoder.encode(uP.getPassword()));
+        //uP.setPassword(passwordEncoder.encode(uP.getPassword()));
 		profileRepository.save(uP);
 	}
 

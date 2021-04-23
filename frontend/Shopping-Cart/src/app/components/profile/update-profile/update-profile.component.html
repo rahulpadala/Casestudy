@@ -1,2 +1,54 @@
-<!-- <div id="myPaypalButtons">
-</div>     -->
+
+<form #editForm="ngForm">
+    <div>
+        <button mat-button class="close-icon" [mat-dialog-close]="true" style="margin-left: 90%;">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="form-row">
+      <div>
+        <input type="hidden" name="profileId" ngModel={{user?.profileId}} class="form-control" id="profileId" placeholder="User Id">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="fullName">Full Name</label>
+        <input type="text" name="fullName" ngModel={{user?.fullName}} class="form-control" id="fullName" placeholder="Full Name">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="emailId">Email</label>
+        <input type="text" name="emailId" ngModel={{user?.emailId}} class="form-control" id="emailId" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-row">
+     <div class="form-group col-md-5">
+      <label for="gender"> Gender </label>
+      <input type="text" name="gender" ngModel={{user?.gender}} class="form-control" id="gender" placeholder="Gender">
+     </div>
+     <div class="form-group col-md-5">
+        <label for="image"> image </label>
+        <input type="text" name="image" ngModel={{user?.image}} class="form-control" id="image" placeholder="Profile Image">
+       </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <input type="hidden" name="role"  ngModel={{user?.role}} class="form-control" id="role" placeholder="Role">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="mobileNumber"> Mobile </label>
+        <input type="text" name="mobileNumber" ngModel={{user?.mobileNumber}} class="form-control"  id="mobileNumber" placeholder="Mobile Number">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="dateOfBirth">Date Of Birth </label>
+        <input type="date" name="dateOfBirth" ngModel={{user?.dateOfBirth}} class="form-control" id="dateOfBirth" placeholder="date Of Birth">
+      </div>
+      <div>
+        <input type="hidden" name="password" ngModel={{user?.password}} class="form-control" id="password" placeholder="Password">
+      </div>
+      <div class="form-group col-md-10">
+        <label for="about">about</label>
+        <input type="text" name="about" ngModel={{user?.about}} class="form-control" id="about" placeholder="About">
+      </div> 
+    </div>
+    <button type="submit" (click)="updateUser(editForm.value)" class="btn btn-primary">Update</button>
+  </form>

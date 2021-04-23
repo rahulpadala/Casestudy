@@ -37,6 +37,8 @@ import { UnauthorizedComponent } from './components/shared/unauthorized/unauthor
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatBadgeModule} from '@angular/material/badge';
 import { UpdateProfileComponent } from './components/profile/update-profile/update-profile.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,7 @@ import { UpdateProfileComponent } from './components/profile/update-profile/upda
     UnauthorizedComponent,
     UpdateProfileComponent
   ],
-  entryComponents:[UpdateStockComponent,OrdersComponent,CheckoutComponent],
+  entryComponents:[UpdateStockComponent,OrdersComponent,CheckoutComponent,UpdateProfileComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -78,6 +80,8 @@ import { UpdateProfileComponent } from './components/profile/update-profile/upda
     MatExpansionModule,
     MatSnackBarModule,
     MatBadgeModule,
+    MatProgressBarModule,
+    MatIconModule
 
   ],
   providers: [[{
